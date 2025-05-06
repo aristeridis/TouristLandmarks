@@ -11,25 +11,47 @@ public class Landmark {
     @NonNull
     String id;
     String description;
+    double latitude;
+    double longitude;
     @ColumnInfo(name = "landamarkName")
     @NonNull
     String name;
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     byte[] photo;
 
-    public Landmark(String id, String description, @NonNull String name, byte[] photo) {
-        this.id = id;
-        this.description = description;
-        this.name = name;
-        this.photo = photo;
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public byte[] getPhoto() {
+
         return photo;
     }
 
     public void setPhoto(byte[] photo) {
+
         this.photo = photo;
+    }
+
+    public Landmark(String id, String description, @NonNull String name, byte[] photo,double latitude, double longitude) {
+        this.id = id;
+        this.description = description;
+        this.name = name;
+        this.photo = photo;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     @Override
@@ -38,6 +60,8 @@ public class Landmark {
                 "id='" + id + '\'' +
                 "description='" + description + '\'' +
                 ", name='" + name + '\'' +
+                "latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
                 '}';
     }
 }
