@@ -10,7 +10,7 @@ public interface LandmarksDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Landmark... landmarks);
 
-    @Query("Select * from Landmark")
+    @Query("SELECT * FROM Landmark")
     List<Landmark> getAllLandmarks();
 
 }
