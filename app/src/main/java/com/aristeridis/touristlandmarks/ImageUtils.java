@@ -2,30 +2,28 @@ package com.aristeridis.touristlandmarks;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.widget.ImageView;
 import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+
 public class ImageUtils {
 
-    public byte[] getImageBytes(String imagePath) {
+    public static byte[] getImageBytesFromUri(Uri imageUri, android.content.ContentResolver contentResolver) throws IOException {
+        InputStream inputStream = contentResolver.openInputStream(imageUri);
+        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            FileInputStream fileInputStream = new FileInputStream(imagePath);
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                byteArrayOutputStream.write(buffer, 0, bytesRead);
-            }
-            fileInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
         return byteArrayOutputStream.toByteArray();
     }
-    public void setImageFromBytes(byte[] imageBytes, ImageView imageView) {
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        imageView.setImageBitmap(bitmap);
-    }
 
+    public static byte[] getImageBytesFromImageView(ImageView imageView) {
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
 }
+
