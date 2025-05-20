@@ -5,36 +5,62 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Arrays;
+
 @Entity
 public class Landmark {
     @PrimaryKey
     @NonNull
     String id;
-    String description;
-    double latitude;
-    double longitude;
     @ColumnInfo(name = "landamarkName")
     @NonNull
     String name;
+    String city;
+    String address;
+    String latitude;
+    String longitude;
+    public String timeStamp;
+
+
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     byte[] photo;
 
-    public double getLatitude() {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @NonNull
+    public String getName() {
+        return name;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
+    public String getTimeStamp() {
+        return timeStamp;
+    }
     public byte[] getPhoto() {
 
         return photo;
@@ -45,23 +71,34 @@ public class Landmark {
         this.photo = photo;
     }
 
-    public Landmark(String id, String description, @NonNull String name, byte[] photo,double latitude, double longitude) {
+    public Landmark(String id, String description, @NonNull String name, byte[] photo,String latitude, String longitude) {
         this.id = id;
-        this.description = description;
+        this.address = description;
         this.name = name;
         this.photo = photo;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
+    public Landmark( String city, String address, String latitude, String longitude, String timeStamp) {
+        this.id = id;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.timeStamp = timeStamp;
+    }
+
     @Override
     public String toString() {
         return "Landmark{" +
                 "id='" + id + '\'' +
-                "description='" + description + '\'' +
                 ", name='" + name + '\'' +
-                "latitude='" + latitude + '\'' +
+                ", city='" + city + '\'' +
+                ", address='" + address + '\'' +
+                ", latitude='" + latitude + '\'' +
                 ", longitude='" + longitude + '\'' +
+                ", timeStamp='" + timeStamp + '\'' +
+                ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

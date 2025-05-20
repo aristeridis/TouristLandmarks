@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView nameTextView, descriptionTextView;
     private Location currentLocation;
 
+    @RequiresPermission(allOf = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
         String name = nameTextView.getText().toString();
         String description = descriptionTextView.getText().toString();
         byte[] photo = ImageUtils.getImageBytesFromImageView(imageView);  // Χρησιμοποιούμε την ImageUtils
-        double latitude = currentLocation != null ? currentLocation.getLatitude() : 0.0;
-        double longitude = currentLocation != null ? currentLocation.getLongitude() : 0.0;
+        String latitude = String.valueOf(currentLocation != null ? currentLocation.getLatitude() : 0.0);
+        String longitude = String.valueOf(currentLocation != null ? currentLocation.getLongitude() : 0.0);
 
         Landmark landmark = new Landmark("1", description, name, photo, latitude, longitude);
         landmarksViewModel.insert(landmark);
