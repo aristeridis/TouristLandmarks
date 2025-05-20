@@ -16,7 +16,7 @@ public class LandmarkViewModel extends AndroidViewModel {
         super(application);
         AppDatabase db = Room.databaseBuilder(application, AppDatabase.class, "landmarks-db").build();
         landmarksDao = db.landmarksDao();
-        allLandmarks = (LiveData<List<Landmark>>) landmarksDao.getAllLandmarks();  // Υποθέτω ότι θέλεις να το κάνεις LiveData
+        allLandmarks = (LiveData<List<Landmark>>) landmarksDao.getAllLandmarks();
     }
 
     public void insert(Landmark landmark) {

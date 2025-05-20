@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 is.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(this, "Σφάλμα στην εικόνας", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Σφάλμα στην εικόνα", Toast.LENGTH_SHORT).show();
                 return;
             }
             addNewLandmarkToList();
