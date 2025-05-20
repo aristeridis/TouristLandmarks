@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+    <ImageView
+            android:id="@+id/photoView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:background="#DDD"
+            android:contentDescription="Landmark Photo" />
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp">
+
+        <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Όνομα"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000" />
+
+        <TextView
+                android:id="@+id/categoryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Κατηγορία"
+                android:textSize="14sp"
+                android:textColor="#555"
+                android:layout_marginTop="2dp"/>
+
+        <TextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lat: ---, Lon: ---"
+                android:textSize="12sp"
+                android:textColor="#777"
+                android:layout_marginTop="2dp"/>
+
+    </LinearLayout>
+</LinearLayout>

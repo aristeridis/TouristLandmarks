@@ -1,6 +1,7 @@
 package com.aristeridis.touristlandmarks;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -12,5 +13,8 @@ public interface LandmarksDao {
 
     @Query("SELECT * FROM Landmark")
     List<Landmark> getAllLandmarks();
+
+    @Delete
+    void delete(Landmark landmark);
 
 }

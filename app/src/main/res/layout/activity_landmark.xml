@@ -39,5 +39,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Αποθήκευση Σημείου" />
+        <Button
+                android:id="@+id/viewAllButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Προβολή Όλων" />
     </LinearLayout>
 </ScrollView>
